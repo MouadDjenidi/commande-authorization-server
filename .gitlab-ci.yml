@@ -20,7 +20,7 @@ deploy:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=commande-authorization-server --api-key=f80c08cd-8aa7-48c3-9816-2d52806234ed
+  - dpl --provider=heroku --app=commande-authorization-server --api-key=997c6806-a2c8-4a6f-ab99-041920022e3d
   only:
   - master  
   
