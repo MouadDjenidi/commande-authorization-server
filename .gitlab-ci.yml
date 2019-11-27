@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+  - deploy
+  
+maven-build:
+  image: maven:3-jdk-11
+  stage: build
+  script: "mvn package -B"
+
+maven-test:
+  image: maven:3-jdk-11
+  stage: test
+  script: "mvn test -B"
+
+deploy:
+  stage: deploy
+  image: ruby:latest
+  script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - dpl --provider=heroku --app=commande-authorization-server --api-key=f80c08cd-8aa7-48c3-9816-2d52806234ed
+  only:
+  - master  
+  
